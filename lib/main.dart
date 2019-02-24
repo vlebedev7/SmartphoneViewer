@@ -64,8 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     "Zte"
   ];
 
-  void _onClickFind() {
-    var phones = PhoneApi.getPhones(SearchSettings(brandName ?? ''));
+  void _onClickFind() async {
+    print('_onClickFind 1');
+    var phones = await PhoneApi.getPhones(SearchSettings(brandName ?? ''));
+    
+    print("_onClickFind phones: ${phones.length}");
     setState(() {
       _phones = phones;
       _optionsExpanded = false;
@@ -106,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   RaisedButton(
                     color: Colors.deepOrange,
                     textTheme: ButtonTextTheme.primary,
-                    onPressed: () {},
+                    onPressed: _onClickFind,
                     child: Text('Find', textScaleFactor: 1.5),
                   )
                 ],
