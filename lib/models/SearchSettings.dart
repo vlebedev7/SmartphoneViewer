@@ -1,5 +1,7 @@
 part of models;
 
 class SearchSettings {
-  String brand_name = null;
+  String brandName;
+
+  SearchSettings(this.brandName){}
 }
